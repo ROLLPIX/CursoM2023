@@ -12,8 +12,6 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
  */
 class Version extends \Magento\Config\Block\System\Config\Form\Field
 {
-    const EXTENSION_URL = 'https://www.rollpix.com/magento-2-custom-shipping.html';
-
     /**
      * @var \Rollpix\Shipping\Helper\Data $helper
      */
@@ -39,12 +37,7 @@ class Version extends \Magento\Config\Block\System\Config\Form\Field
     {
         $extensionVersion   = $this->_helper->getExtensionVersion();
         $extensionTitle     = 'Custom Shipping';
-        $versionLabel       = sprintf(
-            '<a href="%s" title="%s" target="_blank">%s</a>',
-            self::EXTENSION_URL,
-            $extensionTitle,
-            $extensionVersion
-        );
+        $versionLabel       = sprintf( '%s', $extensionVersion );
         $element->setValue($versionLabel);
 
         return $element->getValue();

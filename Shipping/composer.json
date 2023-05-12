@@ -1,18 +1,9 @@
 {
-  "name": "rollpix/magento2-custom-shipping",
+  "name": "rollpix/magento2-shipping",
   "description": "Magento 2 Custom Shipping",
   "keywords": ["magento", "magento2 extension", "magento 2 extension", "extension", "module", "magento2 module", "magento 2 module", "shipping", "shipment", "method"],
   "type": "magento2-module",
-  "version": "1.0.5",
-  "authors": [
-    {
-      "name": "Raj KB",
-      "email": "rollpix@gmail.com",
-      "homepage": "https://www.rollpix.com",
-      "role": "Maintainer"
-    }
-  ],
-  "homepage": "https://www.rollpix.com/magento-2-custom-shipping.html",
+  "version": "1.0.0",
   "license": [
     "OSL-3.0"
   ],
@@ -23,7 +14,5 @@
     "psr-4": {
       "Rollpix\\Shipping\\": ""
     }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+  }
 }
