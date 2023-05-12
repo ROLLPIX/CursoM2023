@@ -31,7 +31,8 @@ class PopulateShippingMethods implements DataPatchInterface {
     }
 
     public function apply() : void {
-        $this->moduleDataSetup->startSetup() ;
+        // Todo in future commits.
+        /*$this->moduleDataSetup->startSetup() ;
 
         $method = $this->shippingMethodFactory->create() ;
         $method->setData( [
@@ -39,6 +40,6 @@ class PopulateShippingMethods implements DataPatchInterface {
         ] ) ;
         $this->shippingMethodRM->save( $method ) ;
 
-        $this->moduleDataSetup->endSetup() ;
+        $this->moduleDataSetup->endSetup() ;*/
     }
 }
