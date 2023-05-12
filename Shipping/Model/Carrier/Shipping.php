@@ -2,8 +2,10 @@
 
 namespace Rollpix\Shipping\Model\Carrier;
 
+use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Shipping\Model\Carrier\AbstractCarrier;
 use Magento\Shipping\Model\Carrier\CarrierInterface;
 use Magento\Shipping\Model\Rate\ResultFactory;
@@ -12,6 +14,7 @@ use Magento\Quote\Model\Quote\Address\RateResult\Method;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Psr\Log\LoggerInterface;
+use Rollpix\Shipping\Model\ResourceModel\ShippingMethod\Collection as MethodCollection;
 
 /**
  * @category   Rollpix
@@ -26,7 +29,7 @@ class Shipping extends AbstractCarrier implements CarrierInterface
      *
      * @var string
      */
-    protected $_code = 'mpshipping';
+    protected $_code = 'rollpixshipping';
 
     /**
      * Whether this carrier has fixed rates calculation
@@ -38,12 +41,15 @@ class Shipping extends AbstractCarrier implements CarrierInterface
     /**
      * @var ResultFactory
      */
-    protected $rateResultFactory;
+    protected $_rateResultFactory;
 
     /**
      * @var MethodFactory
      */
-    protected $rateMethodFactory;
+    protected $_rateMethodFactory;
+
+    private MethodCollection       $methodCollection ;
+    private Session                $session ;
 
     public function __construct(
         ScopeConfigInterface $scopeConfig,
@@ -51,10 +57,14 @@ class Shipping extends AbstractCarrier implements CarrierInterface
         LoggerInterface $logger,
         ResultFactory $rateResultFactory,
         MethodFactory $rateMethodFactory,
+        MethodCollection $methodCollection,
+        Session          $session,
         array $data = []
     ) {
-        $this->rateResultFactory = $rateResultFactory;
-        $this->rateMethodFactory = $rateMethodFactory;
+        $this->_rateResultFactory = $rateResultFactory;
+        $this->_rateMethodFactory = $rateMethodFactory;
+        $this->methodCollection = $methodCollection ;
+        $this->session = $session ;
         parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);
     }
 
@@ -67,28 +77,7 @@ class Shipping extends AbstractCarrier implements CarrierInterface
      */
     public function getAllowedMethods()
     {
-        $methods = array(
-            0 => array(
-                'code' => 'code1',
-                'title' => 'Moto',
-                'method' => 'Rollpix Shipping',
-                'cost' => 11.2
-            ),
-            1 => array(
-                'code' => 'code2',
-                'title' => 'Auto',
-                'method' => 'Rollpix Shipping',
-                'cost' => 32.48
-            ),
-            2 => array(
-                'code' => 'code3',
-                'title' => 'Veni a buscarlo',
-                'method' => 'Rollpix Shipping',
-                'cost' => 0
-            ),
-
-        );
-        return $methods;
+        return [$this->getCarrierCode() => __($this->getConfigData('name'))];
     }
 
     /**
@@ -99,7 +88,7 @@ class Shipping extends AbstractCarrier implements CarrierInterface
      * @return DataObject|bool|null
      * @api
      */
-    public function collectRates(RateRequest $request)
+    public function collectRates( RateRequest $request )
     {
         /**
          * Make sure that shipping method is enabled
@@ -107,30 +96,38 @@ class Shipping extends AbstractCarrier implements CarrierInterface
         if (! $this->isActive()) {
             return false;
         }
+        $factor = $this->reverseCoupon() ;
 
         /** @var \Magento\Shipping\Model\Rate\Result $result */
-        /** @var Method $method */
-        $result = $this->rateResultFactory->create();
-        $allowedMethods = $this->getAllowedMethods();
-        foreach ($allowedMethods as $key) {
+        $result = $this->_rateResultFactory->create();
 
-            $method = $this->rateMethodFactory->create();
+        $methods = $this->methodCollection->getItems() ;
+        foreach ( $methods as $shippingMethod ) {
+            $newMethod = $this->_rateMethodFactory->create() ;
+            $carrier   = $shippingMethod->getCode() ;
+            $newMethod->setCarrier( $this->getCarrierCode() ) ;
+            // $newMethod->setCarrierTitle( $shippingMethod->getTitle() ) ;
+            $newMethod->setCarrierTitle( "$carrier" ) ;
 
-            $method->setCarrier($this->_code);
-            
-            $method->setCarrierTitle($key["title"]);
+            $newMethod->setMethod($this->getCarrierCode());
+            $newMethod->setMethodTitle( $this->getConfigData( 'name' ) );
 
-            $method->setMethod($key["code"]);
-            $method->setMethodTitle($key["method"]);
+            $newMethod->setPrice( $shippingMethod->getCost() * $factor ) ;
+            $newMethod->setCost( $shippingMethod->getCost() * $factor ) ;
 
-            $shippingCost = (float)$key["cost"];
-            $method->setPrice($shippingCost);
-            $method->setCost($shippingCost);
-
-
-            $result->append($method);
+            $result->append( $newMethod ) ;
         }
+
         return $result;
     }
 
+    private function reverseCoupon() {
+        $factor = 1 ;
+        $quote = $this->session->getQuote() ;
+        $couponCode = $quote->getData( 'coupon_code' ) ;
+        $reverse = $this->getConfigData( 'reverse' ) ;
+
+        if ( ( $reverse == 1 || $reverse == 'true' ) && $couponCode ) $factor = 1.5 ;
+        return $factor ;
+    }
 }
