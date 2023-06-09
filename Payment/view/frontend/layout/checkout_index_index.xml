@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
 -->
@@ -21,13 +21,13 @@
                                                     <item name="children" xsi:type="array">
                                                         <item name="renders" xsi:type="array">
                                                             <item name="children" xsi:type="array">
-                                                                <item name="postpay" xsi:type="array">
-                                                                    <item name="component" xsi:type="string">Postpay_Payment/js/view/payment/postpay</item>
+                                                                <item name="rollpix" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Rollpix_Payment/js/view/payment/rollpix</item>
                                                                     <item name="methods" xsi:type="array">
-                                                                        <item name="postpay" xsi:type="array">
+                                                                        <item name="rollpix" xsi:type="array">
                                                                             <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
                                                                         </item>
-                                                                        <item name="postpay_pay_now" xsi:type="array">
+                                                                        <item name="rollpix_pay_now" xsi:type="array">
                                                                             <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
                                                                         </item>
                                                                     </item>

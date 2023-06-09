@@ -1,19 +1,19 @@
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
 var config = {
     map: {
         '*': {
-            postpayUi: 'Postpay_Payment/js/view/ui'
+            rollpixUi: 'Rollpix_Payment/js/view/ui'
         }
     },
     shim: {
-        'postpay-js' : {
-            'exports': 'postpay'
+        'rollpix-js' : {
+            'exports': 'rollpix'
         }
     },
     paths: {
-        'postpay-js': 'https://cdn.postpay.io/v1/js/postpay'
+        'rollpix-js': 'https://cdn.rollpix.io/v1/js/rollpix'
     }
 };

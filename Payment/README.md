@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://github.com/postpayio/magento2/releases"><img src="https://img.shields.io/github/release/postpayio/magento2.svg" alt="Latest Version"/></a> <a href="https://travis-ci.com/postpayio/magento2"><img src="https://img.shields.io/travis/postpayio/magento2.svg" alt="Build Status"/></a>
+  <a href="https://github.com/rollpixio/magento2/releases"><img src="https://img.shields.io/github/release/rollpixio/magento2.svg" alt="Latest Version"/></a> <a href="https://travis-ci.com/rollpixio/magento2"><img src="https://img.shields.io/travis/rollpixio/magento2.svg" alt="Build Status"/></a>
 </p>
 
-# Postpay for Magento 2 
+# Rollpix for Magento 2 
 
-[Postpay](https://postpay.io) Payment Gateway for Magento 2.
+[Rollpix](https://rollpix.io) Payment Gateway for Magento 2.
 
 ## Installation
 
-The recommended way to install postpay is through Composer:
+The recommended way to install rollpix is through Composer:
 
 ```sh
-composer require postpay/magento2
+composer require rollpix/magento2
 ```
 
 Register the extension:

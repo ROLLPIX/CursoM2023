@@ -1,19 +1,19 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
 
 /**
- * @var \Postpay\Payment\Block\Widget\Product $block
+ * @var \Rollpix\Payment\Block\Widget\Product $block
  */
 
 use Magento\Framework\Json\Helper\Data;
 
 ?>
 
-<div data-mage-init='{"postpayUi": <?= $this->helper(Data::class)->jsonEncode($block->getUiParams()) ?>}'>
-    <div class="postpay-widget"
+<div data-mage-init='{"rollpixUi": <?= $this->helper(Data::class)->jsonEncode($block->getUiParams()) ?>}'>
+    <div class="rollpix-widget"
          data-type="product"
          data-amount="<?= $block->escapeHtmlAttr($block->getFinalPrice()->jsonSerialize()); ?>",
          data-currency="<?= $block->escapeHtmlAttr($block->getCurrencyCode()); ?>">

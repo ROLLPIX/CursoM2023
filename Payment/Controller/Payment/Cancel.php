@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Controller\Payment;
+namespace Rollpix\Payment\Controller\Payment;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\Controller\ResultFactory;
@@ -19,7 +19,7 @@ class Cancel extends Action
     public function execute()
     {
         $this->messageManager->addSuccessMessage(
-            __('Postpay checkout has been canceled.')
+            __('Rollpix checkout has been canceled.')
         );
         /** @var \Magento\Framework\Controller\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);

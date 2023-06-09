@@ -1,23 +1,23 @@
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
 define([
     'jquery',
-    'postpay-js'
-], function ($, postpay) {
+    'rollpix-js'
+], function ($, rollpix) {
     'use strict';
 
     var config = window.checkoutConfig;
 
-    $.widget('mage.postpayUi', {
-        options: config && config.payment.postpay.uiParams,
+    $.widget('mage.rollpixUi', {
+        options: config && config.payment.rollpix.uiParams,
 
         /** @inheritdoc */
         _create: function () {
-            postpay.init(this.options);
+            rollpix.init(this.options);
         }
     });
 
-    return $.mage.postpayUi;
+    return $.mage.rollpixUi;
 });

@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Adapter;
+namespace Rollpix\Payment\Model\Adapter;
 
 /**
  * Interface AdapterInterface
@@ -19,7 +19,7 @@ interface AdapterInterface
      *
      * @return array
      *
-     * @throws \Postpay\Exceptions\ApiException
+     * @throws \Rollpix\Exceptions\ApiException
      */
     public function checkout(array $params);
 
@@ -30,7 +30,7 @@ interface AdapterInterface
      *
      * @return array
      *
-     * @throws \Postpay\Exceptions\ApiException
+     * @throws \Rollpix\Exceptions\ApiException
      */
     public function capture($id);
 
@@ -43,7 +43,7 @@ interface AdapterInterface
      *
      * @return array
      *
-     * @throws \Postpay\Exceptions\ApiException
+     * @throws \Rollpix\Exceptions\ApiException
      */
     public function refund($id, $refundId, $amount);
 }

@@ -1,14 +1,14 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Request;
+namespace Rollpix\Payment\Model\Request;
 
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\App\ObjectManager;
-use Postpay\Payment\Model\Adapter\ApiAdapter;
+use Rollpix\Payment\Model\Adapter\ApiAdapter;
 
 /**
  * Add customer information to checkout request.

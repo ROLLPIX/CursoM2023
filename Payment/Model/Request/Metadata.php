@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Request;
+namespace Rollpix\Payment\Model\Request;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ProductMetadataInterface;
@@ -27,7 +27,7 @@ class Metadata
         $productMetadata = $objectManager->get(ProductMetadataInterface::class);
         /** @var ModuleListInterface $moduleList */
         $moduleList = $objectManager->get(ModuleListInterface::class);
-        $module = $moduleList->getOne('Postpay_Payment');
+        $module = $moduleList->getOne('Rollpix_Payment');
 
         return [
             'php' => [
@@ -40,7 +40,7 @@ class Metadata
             ],
             'module' => [
                 'name' => $module['name'],
-                'package' => 'postpay/magento2',
+                'package' => 'rollpix/magento2',
                 'version' => $module['setup_version']
             ]
         ];

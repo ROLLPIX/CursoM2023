@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
 -->
@@ -9,7 +9,7 @@
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="postpay_payment_config" xsi:type="object">Postpay\Payment\Model\Ui\ConfigProvider</item>
+                <item name="rollpix_payment_config" xsi:type="object">Rollpix\Payment\Model\Ui\ConfigProvider</item>
             </argument>
         </arguments>
     </type>

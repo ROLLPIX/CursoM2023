@@ -1,12 +1,12 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Request;
+namespace Rollpix\Payment\Model\Request;
 
 use Magento\Quote\Model\Quote\Address as QuoteAddress;
-use Postpay\Payment\Model\Adapter\ApiAdapter;
+use Rollpix\Payment\Model\Adapter\ApiAdapter;
 
 /**
  * Add shipping information to checkout request.

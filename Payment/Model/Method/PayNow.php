@@ -1,16 +1,16 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Method;
+namespace Rollpix\Payment\Model\Method;
 
-use Postpay\Payment\Gateway\Config\PayNowConfig;
+use Rollpix\Payment\Gateway\Config\PayNowConfig;
 
 /**
- * Postpay pay now method.
+ * Rollpix pay now method.
  */
-class PayNow extends AbstractPostpayMethod
+class PayNow extends AbstractRollpixMethod
 {
     /**
      * Number of instalments

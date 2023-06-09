@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Controller\Payment;
+namespace Rollpix\Payment\Controller\Payment;
 
 use Magento\Checkout\Helper\Data;
 use Magento\Checkout\Model\Session;
@@ -12,8 +12,8 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Quote\Api\CartManagementInterface;
-use Postpay\Exceptions\ApiException;
-use Postpay\Payment\Model\Method\AbstractPostpayMethod;
+use Rollpix\Exceptions\ApiException;
+use Rollpix\Payment\Model\Method\AbstractRollpixMethod;
 
 /**
  * Order capture controller.
@@ -72,7 +72,7 @@ class Capture extends Action
         $quote = $this->checkoutSession->getQuote();
         /** @var \Magento\Quote\Model\Quote\Payment $payment */
         $payment = $quote->getPayment();
-        $id = $payment->getAdditionalInformation(AbstractPostpayMethod::TRANSACTION_ID_KEY);
+        $id = $payment->getAdditionalInformation(AbstractRollpixMethod::TRANSACTION_ID_KEY);
         /** @var \Magento\Framework\Controller\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
 

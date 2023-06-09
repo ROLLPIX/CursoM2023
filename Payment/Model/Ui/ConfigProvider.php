@@ -1,15 +1,15 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Ui;
+namespace Rollpix\Payment\Model\Ui;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\UrlInterface;
-use Postpay\Payment\Gateway\Config\Config;
-use Postpay\Payment\Gateway\Config\PayNowConfig;
-use Postpay\Payment\Model\Method\PayNow;
+use Rollpix\Payment\Gateway\Config\Config;
+use Rollpix\Payment\Gateway\Config\PayNowConfig;
+use Rollpix\Payment\Model\Method\PayNow;
 
 /**
  * Retrieve config needed for checkout.
@@ -59,13 +59,13 @@ class ConfigProvider implements ConfigProviderInterface
                     'uiParams' => $this->config->getUiParams(),
                     'inContext' => $this->config->inContext(),
                     'summaryWidget' => $this->config->summaryWidgetEnabled(),
-                    'checkoutUrl' => $this->urlBuilder->getUrl('postpay/payment/checkout'),
-                    'icon' => 'https://cdn.postpay.io/e/images/postpay-' . $this->config->getTheme() . '.png'
+                    'checkoutUrl' => $this->urlBuilder->getUrl('rollpix/payment/checkout'),
+                    'icon' => 'https://cdn.rollpix.io/e/images/rollpix-' . $this->config->getTheme() . '.png'
                 ],
                 PayNowConfig::CODE => [
                     'summaryWidget' => $this->payNowConfig->summaryWidgetEnabled(),
                     'numInstalments' => PayNow::NUM_INSTALMENTS,
-                    'icon' => 'https://cdn.postpay.io/e/images/postpay-pay-now.png'
+                    'icon' => 'https://cdn.rollpix.io/e/images/rollpix-pay-now.png'
                 ]
             ]
         ];

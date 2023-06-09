@@ -1,6 +1,6 @@
 <!--
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
 -->
@@ -22,7 +22,7 @@
                "/>
 
         <label class="label" data-bind="attr: {'for': getCode()}">
-            <img class="payment-icon" data-bind="attr: {src: getIcon(), alt: $t('Postpay payment')}"/>
+            <img class="payment-icon" data-bind="attr: {src: getIcon(), alt: $t('Rollpix payment')}"/>
             <span text="getTitle()"></span>
         </label>
     </div>
@@ -42,7 +42,7 @@
             <!--/ko-->
         </div>
 
-        <div class="postpay-widget"
+        <div class="rollpix-widget"
              data-type="payment-summary"
              data-bind="
              attr: {
@@ -63,7 +63,7 @@
                 <button class="action primary checkout"
                         type="submit"
                         data-bind="
-                        click: continueToPostpay,
+                        click: continueToRollpix,
                         attr: {title: $t('Place Order')},
                         css: {disabled: !isPlaceOrderActionAllowed()},
                         enable: (getCode() == isChecked())

@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Controller\Payment;
+namespace Rollpix\Payment\Controller\Payment;
 
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Action;
@@ -11,13 +11,13 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Webapi\Exception;
 use Magento\Quote\Api\CartRepositoryInterface;
-use Postpay\Exceptions\ApiException;
-use Postpay\Payment\Model\Adapter\AdapterInterface;
-use Postpay\Payment\Model\Method\AbstractPostpayMethod;
-use Postpay\Payment\Model\Request\Checkout as CheckoutRequest;
+use Rollpix\Exceptions\ApiException;
+use Rollpix\Payment\Model\Adapter\AdapterInterface;
+use Rollpix\Payment\Model\Method\AbstractRollpixMethod;
+use Rollpix\Payment\Model\Request\Checkout as CheckoutRequest;
 
 /**
- * Create a Postpay checkout.
+ * Create a Rollpix checkout.
  */
 class Checkout extends Action
 {
@@ -34,7 +34,7 @@ class Checkout extends Action
     /**
      * @var AdapterInterface
      */
-    private $postpayAdapter;
+    private $rollpixAdapter;
 
     /**
      * Constructor.
@@ -42,18 +42,18 @@ class Checkout extends Action
      * @param Context $context
      * @param Session $checkoutSession
      * @param CartRepositoryInterface $quoteRepository
-     * @param AdapterInterface $postpayAdapter
+     * @param AdapterInterface $rollpixAdapter
      */
     public function __construct(
         Context $context,
         Session $checkoutSession,
         CartRepositoryInterface $quoteRepository,
-        AdapterInterface $postpayAdapter
+        AdapterInterface $rollpixAdapter
     ) {
         parent::__construct($context);
         $this->checkoutSession = $checkoutSession;
         $this->quoteRepository = $quoteRepository;
-        $this->postpayAdapter = $postpayAdapter;
+        $this->rollpixAdapter = $rollpixAdapter;
     }
 
     /**
@@ -71,14 +71,14 @@ class Checkout extends Action
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
 
         try {
-            $response = $this->postpayAdapter->checkout(
+            $response = $this->rollpixAdapter->checkout(
                 CheckoutRequest::build($quote, $id, $payment->getMethodInstance())
             );
         } catch (ApiException $e) {
             $resultJson->setHttpResponseCode(Exception::HTTP_BAD_REQUEST);
             return $resultJson->setData(['message' => $e->getMessage()]);
         }
-        $payment->setAdditionalInformation(AbstractPostpayMethod::TRANSACTION_ID_KEY, $id);
+        $payment->setAdditionalInformation(AbstractRollpixMethod::TRANSACTION_ID_KEY, $id);
         $this->quoteRepository->save($quote);
 
         return $resultJson->setData($response);

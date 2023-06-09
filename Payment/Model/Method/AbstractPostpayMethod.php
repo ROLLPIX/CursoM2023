@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Method;
+namespace Rollpix\Payment\Model\Method;
 
 use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Api\ExtensionAttributesFactory;
@@ -17,18 +17,18 @@ use Magento\Payment\Model\InfoInterface;
 use Magento\Payment\Model\Method\AbstractMethod;
 use Magento\Payment\Model\Method\Logger;
 use Magento\Sales\Model\Order\Payment\Transaction;
-use Postpay\Payment\Model\Adapter\AdapterInterface;
-use Postpay\Serializers\Decimal;
+use Rollpix\Payment\Model\Adapter\AdapterInterface;
+use Rollpix\Serializers\Decimal;
 
 /**
- * Postpay payment method abstract class.
+ * Rollpix payment method abstract class.
  */
-abstract class AbstractPostpayMethod extends AbstractMethod
+abstract class AbstractRollpixMethod extends AbstractMethod
 {
     /**
-     * Postpay transaction ID key
+     * Rollpix transaction ID key
      */
-    const TRANSACTION_ID_KEY = 'postpay_id';
+    const TRANSACTION_ID_KEY = 'rollpix_id';
 
     /**
      * Number of instalments
@@ -73,7 +73,7 @@ abstract class AbstractPostpayMethod extends AbstractMethod
     /**
      * @var AdapterInterface
      */
-    private $postpayAdapter;
+    private $rollpixAdapter;
 
     /**
      * Constructor.
@@ -85,7 +85,7 @@ abstract class AbstractPostpayMethod extends AbstractMethod
      * @param Data $paymentData
      * @param ScopeConfigInterface $scopeConfig
      * @param Logger $logger
-     * @param AdapterInterface $postpayAdapter
+     * @param AdapterInterface $rollpixAdapter
      * @param AbstractResource|null $resource
      * @param AbstractDb|null $resourceCollection
      * @param array $data
@@ -98,7 +98,7 @@ abstract class AbstractPostpayMethod extends AbstractMethod
         Data $paymentData,
         ScopeConfigInterface $scopeConfig,
         Logger $logger,
-        AdapterInterface $postpayAdapter,
+        AdapterInterface $rollpixAdapter,
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null,
         array $data = []
@@ -115,7 +115,7 @@ abstract class AbstractPostpayMethod extends AbstractMethod
             $resourceCollection,
             $data
         );
-        $this->postpayAdapter = $postpayAdapter;
+        $this->rollpixAdapter = $rollpixAdapter;
     }
 
     /**
@@ -126,12 +126,12 @@ abstract class AbstractPostpayMethod extends AbstractMethod
      *
      * @return $this
      *
-     * @throws \Postpay\Exceptions\ApiException
+     * @throws \Rollpix\Exceptions\ApiException
      */
     public function capture(InfoInterface $payment, $amount)
     {
         $id = $payment->getAdditionalInformation(self::TRANSACTION_ID_KEY);
-        $response = $this->postpayAdapter->capture($id);
+        $response = $this->rollpixAdapter->capture($id);
 
         $payment->setTransactionId($id);
         $payment->setIsTransactionClosed(false);
@@ -153,13 +153,13 @@ abstract class AbstractPostpayMethod extends AbstractMethod
      *
      * @return $this
      *
-     * @throws \Postpay\Exceptions\ApiException
+     * @throws \Rollpix\Exceptions\ApiException
      */
     public function refund(InfoInterface $payment, $amount)
     {
         $id = $payment->getParentTransactionId();
         $refundId = $payment->getOrder()->getIncrementId() . '-' . uniqid();
-        $this->postpayAdapter->refund($id, $refundId, $amount);
+        $this->rollpixAdapter->refund($id, $refundId, $amount);
 
         $payment->setTransactionId($refundId);
         $payment->setParentTransactionId($id);

@@ -1,16 +1,16 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Method;
+namespace Rollpix\Payment\Model\Method;
 
-use Postpay\Payment\Gateway\Config\Config;
+use Rollpix\Payment\Gateway\Config\Config;
 
 /**
- * Postpay split payment method.
+ * Rollpix split payment method.
  */
-class SplitPayment extends AbstractPostpayMethod
+class SplitPayment extends AbstractRollpixMethod
 {
     /**
      * @var string

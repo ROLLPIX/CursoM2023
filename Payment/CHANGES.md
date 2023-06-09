@@ -36,13 +36,13 @@
 
 ## 0.1.1
 
-* Added postpay-php serializers
+* Added rollpix-php serializers
 
 ## 0.1.0
 
-* Renamed the module to Postpay_Payment
+* Renamed the module to Rollpix_Payment
 * Refactored the code
-* Added Postpay\Payment\Adapter\AdapterInterface
+* Added Rollpix\Payment\Adapter\AdapterInterface
 * Fixed and improved checkout payload
 * Added product widget block
 * Removed ViewModel classes and unused interfaces

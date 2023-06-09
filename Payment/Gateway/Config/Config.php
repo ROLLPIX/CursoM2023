@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Gateway\Config;
+namespace Rollpix\Payment\Gateway\Config;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
@@ -13,7 +13,7 @@ use Magento\Store\Model\ScopeInterface;
  */
 class Config extends AbstractConfig
 {
-    const CODE = 'postpay';
+    const CODE = 'rollpix';
 
     const KEY_MERCHANT_ID = 'merchant_id';
     const KEY_SECRET_KEY = 'secret_key';

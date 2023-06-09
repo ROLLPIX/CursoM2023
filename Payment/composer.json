@@ -1,18 +1,18 @@
 {
-    "name": "postpay/magento2",
-    "description": "Postpay Payment Gateway for Magento 2",
+    "name": "rollpix/magento2",
+    "description": "Rollpix Payment Gateway for Magento 2",
     "type": "magento2-module",
     "license": "BSD-3-Clause",
     "version": "0.2.4",
-    "homepage": "https://github.com/postpayio/magento2",
-    "keywords": ["gateway", "magento", "magento2", "payment", "postpay"],
+    "homepage": "https://github.com/rollpixio/magento2",
+    "keywords": ["gateway", "magento", "magento2", "payment", "rollpix"],
     "authors": [
         {
-            "email": "david@postpay.io",
+            "email": "david@rollpix.io",
             "name": "David Tran"
         },
         {
-            "email": "dani@postpay.io",
+            "email": "dani@rollpix.io",
             "name": "Dani Molina"
         },
         {
@@ -21,8 +21,8 @@
         }
     ],
     "support": {
-        "source": "https://github.com/postpayio/magento2",
-        "issues": "https://github.com/postpayio/magento2/issues"
+        "source": "https://github.com/rollpixio/magento2",
+        "issues": "https://github.com/rollpixio/magento2/issues"
     },
     "repositories": [
         {
@@ -32,7 +32,7 @@
     ],
     "require": {
         "magento/framework": "^101.0.0|^102.0.0|^103.0.0",
-        "postpay/postpay-php": "~0.0.4",
+        "rollpix/rollpix-php": "~0.0.4",
         "guzzlehttp/guzzle": ">=6.0"
     },
     "require-dev": {
@@ -41,7 +41,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Postpay\\Payment\\": ""
+            "Rollpix\\Payment\\": ""
         },
         "files": [
             "registration.php"

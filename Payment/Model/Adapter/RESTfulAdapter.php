@@ -1,12 +1,12 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Adapter;
+namespace Rollpix\Payment\Model\Adapter;
 
 /**
- * Postpay RESTful Adapter.
+ * Rollpix RESTful Adapter.
  */
 class RESTfulAdapter extends ApiAdapter implements AdapterInterface
 {
@@ -18,7 +18,7 @@ class RESTfulAdapter extends ApiAdapter implements AdapterInterface
      *
      * @return array
      *
-     * @throws \Postpay\Exceptions\ApiException
+     * @throws \Rollpix\Exceptions\ApiException
      */
     public function post($path, array $params = [])
     {

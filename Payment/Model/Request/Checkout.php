@@ -1,15 +1,15 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Request;
+namespace Rollpix\Payment\Model\Request;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Payment\Model\MethodInterface;
 use Magento\Quote\Model\Quote;
-use Postpay\Payment\Model\Adapter\ApiAdapter;
+use Rollpix\Payment\Model\Adapter\ApiAdapter;
 
 /**
  * Add checkout information to checkout request.
@@ -45,12 +45,12 @@ class Checkout
             'billing_address' => Address::build($billing),
             'customer' => $customer,
             'items' => array_map(
-                'Postpay\Payment\Model\Request\Item::build',
+                'Rollpix\Payment\Model\Request\Item::build',
                 $quote->getAllVisibleItems()
             ),
             'merchant' => [
-                'confirmation_url' => self::getUrl('postpay/payment/capture'),
-                'cancel_url' => self::getUrl('postpay/payment/cancel')
+                'confirmation_url' => self::getUrl('rollpix/payment/capture'),
+                'cancel_url' => self::getUrl('rollpix/payment/cancel')
             ],
             'metadata' => Metadata::build($method),
             'num_instalments' => $method::NUM_INSTALMENTS

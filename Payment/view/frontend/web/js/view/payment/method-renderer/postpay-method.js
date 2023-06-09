@@ -1,5 +1,5 @@
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
 define([
@@ -10,8 +10,8 @@ define([
     'Magento_Checkout/js/model/place-order',
     'Magento_Checkout/js/model/quote',
     'Magento_Customer/js/model/customer',
-    'Postpay_Payment/js/action/set-payment-method',
-    'postpay-js',
+    'Rollpix_Payment/js/action/set-payment-method',
+    'rollpix-js',
     'mage/translate'
 ], function (
     $,
@@ -22,7 +22,7 @@ define([
     quote,
     customer,
     setPaymentMethodAction,
-    postpay,
+    rollpix,
     $t
 ) {
     'use strict';
@@ -32,16 +32,16 @@ define([
     return Component.extend({
         defaults: {
             totals: quote.totals(),
-            template: 'Postpay_Payment/payment/postpay'
+            template: 'Rollpix_Payment/payment/rollpix'
         },
 
         /**
-         * Initialize Postpay Ui.
+         * Initialize Rollpix Ui.
          *
          * Is called after knockout renders the payment summary widget.
          */
         initUi: function () {
-            postpay.init(config.postpay.uiParams);
+            rollpix.init(config.rollpix.uiParams);
         },
 
         /**
@@ -115,15 +115,15 @@ define([
         getButtonText: function () {
             return this.getNumInstalments() === 1 ?
                 $t('Pay Now') :
-                $t('Continue to Postpay');
+                $t('Continue to Rollpix');
         },
 
         /**
          * In-context checkout or redirect.
          */
         checkout: function (params) {
-            if (config.postpay.inContext) {
-                postpay.checkout(params.token);
+            if (config.rollpix.inContext) {
+                rollpix.checkout(params.token);
             } else {
                 customerData.invalidate(['cart']);
                 $.mage.redirect(params.redirect_url);
@@ -133,7 +133,7 @@ define([
         /**
          * Place order handler.
          */
-        continueToPostpay: function () {
+        continueToRollpix: function () {
             if (additionalValidators.validate()) {
                 this.selectPaymentMethod();
                 var self = this;
@@ -144,7 +144,7 @@ define([
                 }
 
                 setPaymentMethodAction(this.messageContainer).done(function () {
-                    placeOrderService(config.postpay.checkoutUrl, payload, self.messageContainer)
+                    placeOrderService(config.rollpix.checkoutUrl, payload, self.messageContainer)
                         .done(function (response) {
                             self.checkout(response);
                         })

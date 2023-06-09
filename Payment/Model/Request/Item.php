@@ -1,15 +1,15 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Request;
+namespace Rollpix\Payment\Model\Request;
 
 use Magento\Catalog\Helper\Image;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Framework\App\ObjectManager;
 use Magento\Quote\Model\Quote\Item as QuoteItem;
-use Postpay\Payment\Model\Adapter\ApiAdapter;
+use Rollpix\Payment\Model\Adapter\ApiAdapter;
 
 /**
  * Add item information to checkout request.

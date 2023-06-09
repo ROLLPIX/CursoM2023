@@ -1,15 +1,15 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Block\Widget;
+namespace Rollpix\Payment\Block\Widget;
 
 use Magento\Catalog\Block\Product\AbstractProduct;
 use Magento\Catalog\Block\Product\Context;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Postpay\Payment\Gateway\Config\Config;
-use Postpay\Payment\Model\Adapter\ApiAdapter;
+use Rollpix\Payment\Gateway\Config\Config;
+use Rollpix\Payment\Model\Adapter\ApiAdapter;
 
 /**
  * Product widget block.

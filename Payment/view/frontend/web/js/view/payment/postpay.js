@@ -1,5 +1,5 @@
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
 define([
@@ -10,12 +10,12 @@ define([
 
     rendererList.push(
         {
-            type: 'postpay',
-            component: 'Postpay_Payment/js/view/payment/method-renderer/postpay-method'
+            type: 'rollpix',
+            component: 'Rollpix_Payment/js/view/payment/method-renderer/rollpix-method'
         },
         {
-            type: 'postpay_pay_now',
-            component: 'Postpay_Payment/js/view/payment/method-renderer/postpay-method'
+            type: 'rollpix_pay_now',
+            component: 'Rollpix_Payment/js/view/payment/method-renderer/rollpix-method'
         }
     );
     return Component.extend({});

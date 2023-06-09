@@ -1,14 +1,14 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Gateway\Config;
+namespace Rollpix\Payment\Gateway\Config;
 
 /**
  * Pay now gateway configuration.
  */
 class PayNowConfig extends AbstractConfig
 {
-    const CODE = 'postpay_pay_now';
+    const CODE = 'rollpix_pay_now';
 }

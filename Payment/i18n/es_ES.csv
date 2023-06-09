@@ -1,16 +1,16 @@
-"Postpay checkout has been canceled.","El checkout con Postpay ha sido cancelado."
+"Rollpix checkout has been canceled.","El checkout con Rollpix ha sido cancelado."
 "Capture error. Id %1. Code: %2.","Error en la captura. Id %1. Código: %2."
-"Postpay is not properly configured.","Postpay no está configurado correctamente."
+"Rollpix is not properly configured.","Rollpix no está configurado correctamente."
 light,claro
 dark,oscuro
 "Pay Now","Pagar Ahora"
-"Continue to Postpay","Continuar con Postpay"
-Postpay,Postpay
+"Continue to Rollpix","Continuar con Rollpix"
+Rollpix,Rollpix
 "Merchant ID","Merchant ID"
 "Secret Key","Clave Secreta"
 "Sandbox Secret Key","Clave Secreta Sandbox"
-"Postpay Sandbox","Postpay Sandbox"
-"Postpay sandbox can be used to test payments.","Postpay sandbox puede ser usado para probar la pasarela de pago."
+"Rollpix Sandbox","Rollpix Sandbox"
+"Rollpix sandbox can be used to test payments.","Rollpix sandbox puede ser usado para probar la pasarela de pago."
 "In-Context Checkout","In-Context Checkout"
 "Checkout flow that keeps customers local to your website.","Proceso de checkout que mantiene a los clientes localizados en su sitio web."
 Theme,Tema

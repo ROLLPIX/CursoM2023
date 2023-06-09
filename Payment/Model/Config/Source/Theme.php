@@ -1,12 +1,12 @@
 <?php
 /**
- * Copyright © Postpay. All rights reserved.
+ * Copyright © Rollpix. All rights reserved.
  * See LICENSE for license details.
  */
-namespace Postpay\Payment\Model\Config\Source;
+namespace Rollpix\Payment\Model\Config\Source;
 
 /**
- * Source model for Postpay theme
+ * Source model for Rollpix theme
  */
 class Theme implements \Magento\Framework\Option\ArrayInterface
 {
