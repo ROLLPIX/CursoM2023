@@ -10,9 +10,6 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Model\Method\Logger;
 use Rollpix\Exceptions\ApiException;
 use Rollpix\Payment\Gateway\Config\Config;
-use Rollpix\RollpixFactory;
-use Rollpix\Serializers\Date;
-use Rollpix\Serializers\Decimal;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -24,11 +21,6 @@ class ApiAdapter
      * @var \Rollpix\Payment
      */
     protected $client;
-
-    /**
-     * @var RollpixFactory
-     */
-    protected $rollpixFactory;
 
     /**
      * @var Config
@@ -48,32 +40,18 @@ class ApiAdapter
     /**
      * Constructor.
      *
-     * @param RollpixFactory $rollpixFactory
      * @param Config $config
      * @param LoggerInterface $logger
      * @param Logger $customLogger
      */
     public function __construct(
-        RollpixFactory $rollpixFactory,
         Config $config,
         LoggerInterface $logger,
         Logger $customLogger
     ) {
-        $this->rollpixFactory = $rollpixFactory;
         $this->config = $config;
         $this->logger = $logger;
         $this->customLogger = $customLogger;
-
-        if ($this->config->isAvailable()) {
-            $this->client = $this->rollpixFactory->create([
-                'config' => [
-                    'merchant_id' => $this->config->getMerchantId(),
-                    'secret_key' => $this->config->getSecretKey(),
-                    'sandbox' => $this->config->isSandbox(),
-                    'client_handler' => 'guzzle'
-                ]
-            ]);
-        }
     }
 
     /**
@@ -119,23 +97,7 @@ class ApiAdapter
      * @return Decimal
      * phpcs:disable Magento2.Functions.StaticFunction
      */
-    public static function decimal($value)
-    {
-        return Decimal::fromFloat($value);
-    }
-
-    /**
-     * Convert date to JSON serializable instance.
-     *
-     * @param string $value
-     *
-     * @return Date
-     * phpcs:disable Magento2.Functions.StaticFunction
-     */
-    public static function date($value)
-    {
-        return Date::fromDate(new DateTime($value));
-    }
+ 
 
     /**
      * Convert datetime to JSON serializable instance.

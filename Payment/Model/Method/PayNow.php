@@ -10,7 +10,7 @@ use Rollpix\Payment\Gateway\Config\PayNowConfig;
 /**
  * Rollpix pay now method.
  */
-class PayNow extends AbstractRollpixMethod
+class PayNow extends AbstractPaymentMethod
 {
     /**
      * Number of instalments

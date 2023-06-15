@@ -13,7 +13,7 @@ use Magento\Framework\Webapi\Exception;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Rollpix\Exceptions\ApiException;
 use Rollpix\Payment\Model\Adapter\AdapterInterface;
-use Rollpix\Payment\Model\Method\AbstractRollpixMethod;
+use Rollpix\Payment\Model\Method\AbstractPaymentMethod;
 use Rollpix\Payment\Model\Request\Checkout as CheckoutRequest;
 
 /**
@@ -78,7 +78,7 @@ class Checkout extends Action
             $resultJson->setHttpResponseCode(Exception::HTTP_BAD_REQUEST);
             return $resultJson->setData(['message' => $e->getMessage()]);
         }
-        $payment->setAdditionalInformation(AbstractRollpixMethod::TRANSACTION_ID_KEY, $id);
+        $payment->setAdditionalInformation(AbstractPaymentMethod::TRANSACTION_ID_KEY, $id);
         $this->quoteRepository->save($quote);
 
         return $resultJson->setData($response);

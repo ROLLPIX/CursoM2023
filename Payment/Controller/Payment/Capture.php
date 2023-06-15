@@ -13,7 +13,7 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Quote\Api\CartManagementInterface;
 use Rollpix\Exceptions\ApiException;
-use Rollpix\Payment\Model\Method\AbstractRollpixMethod;
+use Rollpix\Payment\Model\Method\AbstractPaymentMethod;
 
 /**
  * Order capture controller.
@@ -72,7 +72,7 @@ class Capture extends Action
         $quote = $this->checkoutSession->getQuote();
         /** @var \Magento\Quote\Model\Quote\Payment $payment */
         $payment = $quote->getPayment();
-        $id = $payment->getAdditionalInformation(AbstractRollpixMethod::TRANSACTION_ID_KEY);
+        $id = $payment->getAdditionalInformation(AbstractPaymentMethod::TRANSACTION_ID_KEY);
         /** @var \Magento\Framework\Controller\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
 

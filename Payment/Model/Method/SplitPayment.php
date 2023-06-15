@@ -10,7 +10,7 @@ use Rollpix\Payment\Gateway\Config\Config;
 /**
  * Rollpix split payment method.
  */
-class SplitPayment extends AbstractRollpixMethod
+class SplitPayment extends AbstractPaymentMethod
 {
     /**
      * @var string

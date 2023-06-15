@@ -73,7 +73,7 @@ class Product extends AbstractProduct
      */
     public function getFinalPrice()
     {
-        return ApiAdapter::decimal($this->getProduct()->getFinalPrice());
+        return "";
     }
 
     /**

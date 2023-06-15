@@ -8,7 +8,7 @@ namespace Rollpix\Payment\Observer;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Rollpix\Payment\Gateway\Config\Config;
-use Rollpix\Payment\Model\Method\AbstractRollpixMethod;
+use Rollpix\Payment\Model\Method\AbstractPaymentMethod;
 
 /**
  * Check payment method availability.
@@ -38,7 +38,7 @@ class IsActiveObserver implements ObserverInterface
         $event = $observer->getEvent();
         $methodInstance = $event->getMethodInstance();
 
-        if ($methodInstance instanceof AbstractRollpixMethod && !$this->config->isAvailable()) {
+        if ($methodInstance instanceof AbstractPaymentMethod && !$this->config->isAvailable()) {
             /** @var \Magento\Framework\DataObject $result */
             $result = $observer->getEvent()->getResult();
             $result->setData('is_available', false);

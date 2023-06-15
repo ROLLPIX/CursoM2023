@@ -70,7 +70,7 @@ class Cart extends Template
     public function getSubtotal()
     {
         $totals = $this->cart->getQuote()->getTotals();
-        return ApiAdapter::decimal($totals['subtotal']['value']);
+        return $totals['subtotal']['value'];
     }
 
     /**

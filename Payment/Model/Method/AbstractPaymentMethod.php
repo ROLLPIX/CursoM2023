@@ -18,12 +18,11 @@ use Magento\Payment\Model\Method\AbstractMethod;
 use Magento\Payment\Model\Method\Logger;
 use Magento\Sales\Model\Order\Payment\Transaction;
 use Rollpix\Payment\Model\Adapter\AdapterInterface;
-use Rollpix\Serializers\Decimal;
 
 /**
  * Rollpix payment method abstract class.
  */
-abstract class AbstractRollpixMethod extends AbstractMethod
+abstract class AbstractPaymentMethod extends AbstractMethod
 {
     /**
      * Rollpix transaction ID key

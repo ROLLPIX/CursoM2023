@@ -12,7 +12,7 @@
 <div data-mage-init='{"rollpixUi": {}}'>
     <div class="rollpix-widget"
          data-type="cart"
-         data-amount="<?= $block->escapeHtmlAttr($block->getSubtotal()->jsonSerialize()); ?>"
+         data-amount="<?= $block->escapeHtmlAttr($block->getSubtotal()); ?>"
          data-currency="<?= $block->escapeHtmlAttr($block->getCurrencyCode()); ?>">
     </div>
 </div>
