@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-    <menu>
-        <add id="Modo_Gateway::gateway" title="MODO" module="Modo_Gateway" sortOrder="60" resource="Modo_Gateway::gateway" />
-        <add id="Modo_Gateway::gateway_item" title="MODO Vendors" module="Modo_Gateway" sortOrder="0" action="gateway/item" resource="Modo_Gateway::gateway_item" parent="Modo_Gateway::gateway" />
-        <add id="Modo_Gateway::gateway_settings" title="MODO Settings" module="Modo_Gateway" sortOrder="0" action="adminhtml/system_config/edit/section/payment/"  resource="Modo_Gateway::gateway_item" parent="Modo_Gateway::gateway"/>
-   </menu>
-</config>

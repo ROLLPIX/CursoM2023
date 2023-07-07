@@ -1,0 +1,30 @@
+<?php
+/** @var $block \Rollpix\Elebar\Block\Order\Payment\Info  */
+/** @var $_elebarhelper \Rollpix\Elebar\Helper\Data  */
+$_elebarhelper = $this->helper('Rollpix\Elebar\Helper\Data');
+?>
+<head>
+<script type="text/javascript" src="<?php echo $_elebarhelper->getScriptUrl(); ?>"></script>
+</head>
+<div class="elebar-checkout" data-mage-init='{"elebar-order-payment-info": {}}'>
+    <?php if ($block->getOrderId()) :?>
+    <ul class="order_details">
+        <li class="order"><?= $block->escapeHtml(__('Your order # is: <strong>%1</strong>', $block->getOrderId()), ['strong']) ?></li>
+        <li class="date"><?= $block->escapeHtml(__('Date: <strong>%1</strong>', $block->getOrderCreatedAt()), ['strong']) ?></li>
+        <li class="total"><?= $block->escapeHtml(__('Total: <strong>$%1</strong>', $block->getTotal()), ['strong']) ?></li>
+        <li class="method"><?= $block->escapeHtml(__('Payment method: <strong>%1</strong>', $block->getPaymentMethod()), ['strong']) ?></li>
+    </ul>
+    <?php endif;?>
+
+    <div class="actions-toolbar">
+        <p><?= $block->escapeHtml(__('Click on the button below to complete your order.')) ?></p>
+        <div class="primary">
+            <a class="action primary continue elebar-primary" id="pay-with-elebar" href="#">
+                <span class="elebar-text"><?= $block->escapeHtml(__('Pay with Elebar')) ?></span>
+                <img src="<?= $block->getRollpixLogoUrl()?>" alt="Rollpix Logo Blanco">
+            </a>
+            <!--<a class="action continue primary" href="#" id="pay-with-elebar"><span><?= $block->escapeHtml(__('Pay with Elebar')) ?></span></a>-->
+        </div>
+    </div>
+</div>
+
