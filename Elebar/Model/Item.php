@@ -14,11 +14,11 @@ class Item extends \Magento\Framework\Model\AbstractModel implements \Magento\Fr
     const STATUS_DISABLED = 0;
 
 
-    const CACHE_TAG = 'gateway_vendor';
+    const CACHE_TAG = 'elebar_vendor';
 
-    protected $_cacheTag = 'gateway_vendor';
+    protected $_cacheTag = 'elebar_vendor';
 
-    protected $_eventPrefix = 'gateway_vendor';
+    protected $_eventPrefix = 'elebar_vendor';
 
     /**
      * Constructor
