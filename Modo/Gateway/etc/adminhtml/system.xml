@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="modo_gateway" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <comment>
+                    <![CDATA[<div class="gateway-payment-logo"></div><div class="gateway-payment-text">Ofrecé una alternativa de pago rápida y conveniente a través de pagos logueados desde app MODO o app Bancaria, tus clientes ya tendrán sus tarjetas y cuentas asociadas eliminando errores humanos o abandonos en el proceso de compra.<br/>Además, vas a poder crear promociones exclusivas o trasladar las promos de tus bancos al mundo online, ofreciendo mayores beneficios para tus clientes.</div>]]>
+                </comment>
+                <fieldset_css>complex gateway</fieldset_css>
+                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Payment</frontend_model>
+                <field id="credentials_status" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Estado de credenciales</label>
+                    <frontend_model>Modo\Gateway\Block\Adminhtml\System\Config\CredentialsStatus</frontend_model>
+                </field>
+                <field id="currency" translate="label" type="label" sortOrder="8" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Moneda configurada</label>
+                    <frontend_model>Modo\Gateway\Block\Adminhtml\System\Config\CurrencyStatus</frontend_model>
+                </field>
+                <field id="service_url" translate="label" type="label" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Webhook registrado</label>
+                    <frontend_model>Modo\Gateway\Block\Adminhtml\System\Config\CallbackStatus</frontend_model>
+                </field>
+                <group id="checkout" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>MODO Checkout</label>
+                    <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Activar</label>
+                        <config_path>payment/modo_gateway/active</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>Habilitar MODO en tu E-commerce.</comment>
+                    </field>
+                    <field id="sanbox_mode" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Modo de pruebas</label>
+                        <config_path>payment/modo_gateway/sanbox_mode</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                        <comment>Habilitar o desactivar el modo de pruebas.</comment>
+                    </field>
+                    <field id="checkout_title" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Título</label>
+                        <config_path>payment/modo_gateway/checkout_title</config_path>
+                        <comment>Este es el título que tus clientes verán en el checkout.</comment>
+                        <frontend_model>Modo\Gateway\Block\Adminhtml\System\Config\Disabled</frontend_model>
+                    </field>
+                    <field id="checkout_description" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Descripción</label>
+                        <config_path>payment/modo_gateway/checkout_description</config_path>
+                        <comment>Este es la descripción que tus clientes verán en el checkout.</comment>
+                        <frontend_model>Modo\Gateway\Block\Adminhtml\System\Config\Disabled</frontend_model>
+                    </field>
+                    <field id="sort_order" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Posición en el checkout</label>
+                        <config_path>payment/modo_gateway/sort_order</config_path>
+                        <frontend_class>validate-number</frontend_class>
+                        <comment>Asigna un orden de prioridad para la visualización en el checkout respecto a otros medios de pagos.</comment>
+                    </field>
+                    <field id="order_status" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Estado de orden nueva</label>
+                        <config_path>payment/modo_gateway/order_status</config_path>
+                        <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                        <comment>Este es el estado que las órdenes tendrán cuando se creen en el E-commerce.</comment>
+                    </field>
+                    <field id="approved_order_status" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Estado de orden aprobada</label>
+                        <config_path>payment/modo_gateway/approved_order_status</config_path>
+                        <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                        <comment>Este es el estado que las ordenes tendran cuando se el pago sea aprobado.</comment>
+                    </field>
+                    <field id="failure_order_status" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Estado de orden rechazada</label>
+                        <config_path>payment/modo_gateway/failure_order_status</config_path>
+                        <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                        <comment>Este es el estado que las órdenes tendrán cuando se el pago sea rechazado.</comment>
+                    </field>
+                    <field id="validate_category" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Validación por Categorías</label>
+                        <config_path>payment/modo_gateway/validate_category</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="categories_enable_modo" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>payment/modo_gateway/categories_enable_modo</config_path>
+                        <label>Categorías para habilitar modo</label>
+                        <comment>Ingrese aquí el valor de la categoría de producto: 20</comment>
+                        <backend_model>Modo\Gateway\Model\Adminhtml\System\Config\InvalidateCacheOnChange</backend_model>
+                    </field>
+                </group>
+
+                <group id="credentials" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Credenciales</label>
+                    <comment>
+                        <![CDATA[<div class="modo-gateway-credentials-section"><span style="display:inline">Si todavía no tenés tus credenciales para operar con MODO, regístrate <a href="https://www.modo.com.ar/cobra-con-modo/" target="_blank">aquí</a> y nos comunicaremos a la brevedad para ayudarte.</span></div>]]>
+                    </comment>
+                    <field id="clientid" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>payment/modo_gateway/clientid</config_path>
+                        <label>ClientID</label>
+                        <backend_model>Modo\Gateway\Model\Adminhtml\System\Config\InvalidateCacheOnChange</backend_model>
+                    </field>
+                    <field id="clientsecret" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>payment/modo_gateway/clientsecret</config_path>
+                        <label>ClientSecret</label>
+                        <backend_model>Modo\Gateway\Model\Adminhtml\System\Config\Encrypted</backend_model>
+                    </field>
+                    <field id="storeid" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>payment/modo_gateway/storeid</config_path>
+                        <label>StoreID</label>
+                        <backend_model>Modo\Gateway\Model\Adminhtml\System\Config\InvalidateCacheOnChange</backend_model>
+                    </field>
+
+                </group>
+                <group id="marketplace" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>MODO Marketplace</label>
+                    <field id="marketplace_mode" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Modo Marketplace</label>
+                        <comment>
+                            <![CDATA[<div class="modo-gateway-credentials-section"><span style="display:inline">Es recomendado configurar el Modo-Vendor de cada producto al habilitar la funcionalidad Marketplace </span></div>]]>
+                        </comment>
+                        <config_path>payment/modo_gateway/marketplace_mode</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                     <field id="marketplace_message" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <config_path>payment/modo_gateway/marketplace_message</config_path>
+                        <label>Mensaje de error de multi-carrito</label>
+                        <comment>
+                            <![CDATA[<div class="modo-gateway-credentials-section"><span style="display:inline">Este es el mensaje que veran los clientes cuando no puedan usar modo por carrito multi vendor</span></div>]]>
+                        </comment>
+                    </field>
+                </group>
+                <group id="debug" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Test &amp; Debug</label>
+                    <field id="debug_mode" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Activar logs</label>
+                        <config_path>payment/modo_gateway/debug_mode</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

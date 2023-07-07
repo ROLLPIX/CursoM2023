@@ -1,0 +1,7 @@
+"Your order # is: <strong>%1</strong>","Your order # is: <strong>%1</strong>"
+"User authenticated.","Tus credenciales son validas."
+"User not authenticated.","Tus credenciales no son validas."
+"Credentials section is incomplete. Please, complete the section and try again.","Configura tus credenciales para poder validarlas."
+"Check if your credentials are correct for validate the callback url.","Verifica tus credenciales para validar la URL callback"
+"The URL registered is different than declared in the module.","La URL registrada es diferente a la declarada en el modulo"
+"Callback Registered.","Callback registrado."

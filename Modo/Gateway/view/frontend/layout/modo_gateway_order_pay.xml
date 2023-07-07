@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Modo_Gateway::css/payment-info.css" rel="stylesheet" type="text/css"  />
+    </head>
+    <body>
+        <referenceContainer name="header-wrapper">
+            <referenceBlock name="navigation.sections" remove="true" />
+        </referenceContainer>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Pagar por el pedido</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Modo\Gateway\Block\Order\Payment\Info" name="modo_gateway_order_payment_info" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

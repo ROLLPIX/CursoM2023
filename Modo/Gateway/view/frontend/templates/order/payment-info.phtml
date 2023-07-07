@@ -1,0 +1,30 @@
+<?php
+/** @var $block \Modo\Gateway\Block\Order\Payment\Info  */
+/** @var $_modohelper \Modo\Gateway\Helper\Data  */
+$_modohelper = $this->helper('Modo\Gateway\Helper\Data');
+?>
+<head>
+<script type="text/javascript" src="<?php echo $_modohelper->getScriptUrl(); ?>"></script>
+</head>
+<div class="modo-checkout" data-mage-init='{"modo-order-payment-info": {}}'>
+    <?php if ($block->getOrderId()) :?>
+    <ul class="order_details">
+        <li class="order"><?= $block->escapeHtml(__('Your order # is: <strong>%1</strong>', $block->getOrderId()), ['strong']) ?></li>
+        <li class="date"><?= $block->escapeHtml(__('Date: <strong>%1</strong>', $block->getOrderCreatedAt()), ['strong']) ?></li>
+        <li class="total"><?= $block->escapeHtml(__('Total: <strong>$%1</strong>', $block->getTotal()), ['strong']) ?></li>
+        <li class="method"><?= $block->escapeHtml(__('Payment method: <strong>%1</strong>', $block->getPaymentMethod()), ['strong']) ?></li>
+    </ul>
+    <?php endif;?>
+
+    <div class="actions-toolbar">
+        <p><?= $block->escapeHtml(__('Click on the button below to complete your order.')) ?></p>
+        <div class="primary">
+            <a class="action primary continue modo-primary" id="pay-with-modo" href="#">
+                <span class="modo-text"><?= $block->escapeHtml(__('Pay with MODO')) ?></span>
+                <img src="<?= $block->getModoLogoUrl()?>" alt="Modo Logo Blanco">
+            </a>
+            <!--<a class="action continue primary" href="#" id="pay-with-modo"><span><?= $block->escapeHtml(__('Pay with MODO')) ?></span></a>-->
+        </div>
+    </div>
+</div>
+
